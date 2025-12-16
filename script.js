@@ -2,11 +2,10 @@
 const imageFiles = [
   'images/1000077605.jpg',
   'images/1000077603.jpg',
-  'images/1000077601.jpg'
-  'images/1000077599.jpg'
-  'images/1000077597.jpg'
+  'images/1000077601.jpg',
+  'images/1000077599.jpg',
+  'images/1000077597.jpg',
   'images/1000077595.jpg'
-
 ];
 
 const container = document.querySelector('.slideshow-container');
