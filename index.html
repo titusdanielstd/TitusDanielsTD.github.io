@@ -3,34 +3,27 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Titus Daniels Story</title>
+  <title>Automatic Slideshow</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>Story of My Life</h1>
 
-  <div class="slideshow-container">
+<div class="slideshow-container">
+
   <div class="slide fade">
     <img src="images/1000077580.jpg" alt="Slide 1">
-    <div class="caption">Slide 1</div>
-    <audio src="audio/Final Project.mp3"></audio>
   </div>
+
   <div class="slide fade">
     <img src="images/1000077581.jpg" alt="Slide 2">
-    <div class="caption">Slide 2</div>
-    <audio src="audio/Final Project.mp3"></audio>
   </div>
-  <!-- Repeat for all slides -->
-  <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-  <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+  <div class="slide fade">
+    <img src="images/1000077582.jpg" alt="Slide 3">
+  </div>
+
 </div>
 
-  <!-- Audio -->
-  <audio id="audio" controls loop>
-    <source src="audio/Final Project.mp3" type="audio/mpeg">
-    Your browser does not support the audio element.
-  </audio>
-
-  <script src="script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
