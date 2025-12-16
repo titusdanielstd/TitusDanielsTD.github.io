@@ -1,35 +1,34 @@
-let slideIndex = 1;
-showSlides(slideIndex);
+// Array of all images
+const imageFiles = [
+  'images/1000077605.jpg',
+  'images/1000077603d.jpg',
+  'images/1000077601.jpg'
+];
 
-// Next/previous controls
-function plusSlides(n) {
-  showSlides(slideIndex += n);
+const container = document.querySelector('.slideshow-container');
+
+// Preload images and create img elements
+const slides = imageFiles.map((src, index) => {
+  const img = document.createElement('img');
+  img.src = src;
+  if (index === 0) img.classList.add('active'); // first image visible
+  container.appendChild(img);
+  return img;
+});
+
+let currentIndex = 0;
+
+function nextSlide() {
+  slides[currentIndex].classList.remove('active');
+  currentIndex = (currentIndex + 1) % slides.length;
+  slides[currentIndex].classList.add('active');
 }
 
-// Thumbnail image controls
-function currentSlide(n) {
-  showSlides(slideIndex = n);
-}
+// Change image every 3 seconds
+setInterval(nextSlide, 3000);
 
-function showSlides(n) {
-  let i;
-  let slides = document.getElementsByClassName("slide");
-  let dots = document.getElementsByClassName("dot");
-
-  if (n > slides.length) {slideIndex = 1}
-  if (n < 1) {slideIndex = slides.length}
-
-  for (i = 0; i < slides.length; i++) {
-    slides[i].style.display = "none";
-  }
-
-  for (i = 0; i < dots.length; i++) {
-    dots[i].className = dots[i].className.replace(" active", "");
-  }
-
-  slides[slideIndex-1].style.display = "block";
-  dots[slideIndex-1].className += " active";
-}
-
-// Optional: Auto slideshow
-setInterval(() => { plusSlides(1); }, 5000); // changes every 5 seconds
+// Optional: autoplay audio after user interaction
+const audio = document.getElementById('audio');
+document.body.addEventListener('click', () => {
+  if (audio.paused) audio.play();
+}, { once: true });
