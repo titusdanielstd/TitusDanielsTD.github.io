@@ -19,19 +19,22 @@ const slides = imageFiles.map((src, index) => {
   return img;
 });
 
-let currentIndex = 0;
+let slideIndex = 1;
+showSlides(slideIndex);
 
-function nextSlide() {
-  slides[currentIndex].classList.remove('active');
-  currentIndex = (currentIndex + 1) % slides.length;
-  slides[currentIndex].classList.add('active');
+function plusSlides(n) { showSlides(slideIndex += n); }
+function currentSlide(n) { showSlides(slideIndex = n); }
+
+function showSlides(n) {
+  let slides = document.getElementsByClassName("slide");
+  if (n > slides.length) { slideIndex = 1; }
+  if (n < 1) { slideIndex = slides.length; }
+  for (let i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  }
+  slides[slideIndex-1].style.display = "block";
+
+  // Optional: play audio
+  let audios = slides[slideIndex-1].getElementsByTagName("audio");
+  if(audios.length){ audios[0].play(); }
 }
-
-// Change image every 3 seconds
-setInterval(nextSlide, 3000);
-
-// Optional: autoplay audio after user interaction
-const audio = document.getElementById('audio');
-document.body.addEventListener('click', () => {
-  if (audio.paused) audio.play();
-}, { once: true });
